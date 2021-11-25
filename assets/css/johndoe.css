@@ -41,7 +41,7 @@ canvas{
 .hide{
     opacity: 0;
     pointer-events: none;
-    transition: opacity 2s ease;
+    transition: all 1s ease;
 }
 .up-btn{
     background-color: #6F2CFF;
@@ -106,7 +106,7 @@ canvas{
     background-color: #6F2CFF;
     position: fixed;
     z-index: 3;
-    transition: opacity 2s ease;
+    transition: all 1s ease;
 }
 .preload h1{
     font-size: 30px !important;
