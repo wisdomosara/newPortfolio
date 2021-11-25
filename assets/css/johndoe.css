@@ -36,6 +36,7 @@ canvas{
     height: auto;
     background-color: #000000;
     transition: all 1s ;
+    opacity: 0;
 }
 .hide{
     opacity: 0;
@@ -105,6 +106,7 @@ canvas{
     background-color: #6F2CFF;
     position: fixed;
     z-index: 3;
+    transition: opacity 2s ease;
 }
 .preload h1{
     font-size: 30px !important;
