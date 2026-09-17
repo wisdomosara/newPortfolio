@@ -154,8 +154,8 @@
     portfolio: {
       title: "Wisdom Osara",
       category: "PERSONAL PORTFOLIO",
-      image: "projects/wisdom-osara.jpg",
-      alt: "The new Wisdom Osara portfolio hero with Code over a monochrome studio image",
+      image: "projects/wisdom-osara.jpg?v=personal-hero-1",
+      alt: "The new Wisdom Osara portfolio hero with his name and full stack developer headline",
       description:
         "My portfolio, built around clean design and considered motion.",
       technologies: ["HTML", "CSS", "JavaScript"],

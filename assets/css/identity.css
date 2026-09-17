@@ -75,9 +75,11 @@
 }
 .identity-visual {
   position: absolute;
-  inset: 0;
+  inset: 12% 16% 18%;
   z-index: -2;
   overflow: hidden;
+  border-radius: 6px;
+  mask-image: linear-gradient(#000 45%, transparent 100%);
 }
 .identity-image {
   position: absolute;
@@ -119,28 +121,30 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 42px;
+  bottom: 116px;
+  padding-inline: 22px;
   text-align: center;
   transform: translateY(calc(var(--hero-drift, 0) * -38px));
 }
 .identity-greeting {
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 8px;
+  font-size: clamp(28px, 3vw, 42px);
+  letter-spacing: -0.04em;
+  font-weight: 400;
+  margin-bottom: 18px;
 }
-.identity-role {
-  font-size: 12px;
-  color: #d2d2cc;
+.identity-tagline {
+  margin-top: 24px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #e0e0da;
 }
 .identity-name {
   font-family: "Anton", "Arial Narrow", sans-serif;
-  font-size: clamp(110px, 13vw, 220px);
+  font-size: clamp(76px, 9.5vw, 150px);
   font-weight: 400;
   line-height: 1.04;
   letter-spacing: -0.025em;
-  margin-top: 13px;
+  margin-top: 0;
 }
 .identity-name:focus {
   outline: none;
@@ -189,6 +193,7 @@
   background: #f6f5f1;
   color: #171717;
   font-size: 12px;
+  white-space: nowrap;
   transition:
     background 0.3s,
     color 0.3s;
@@ -313,15 +318,17 @@
 .hero-enter .site-header {
   animation: hero-content-in 0.7s var(--ease) both;
 }
-.hero-enter .identity-greeting,
-.hero-enter .identity-role {
+.hero-enter .identity-greeting {
   animation: hero-content-in 0.7s 0.1s var(--ease) both;
 }
 .hero-enter .name-mask > span {
   animation: hero-name-in 1s 0.12s var(--ease) both;
 }
-.hero-enter .name-mask > em {
-  animation: hero-name-in 1s 0.25s var(--ease) both;
+.hero-enter .name-mask:nth-child(2) > span {
+  animation-delay: 0.25s;
+}
+.hero-enter .identity-tagline {
+  animation: hero-content-in 0.85s 0.4s var(--ease) both;
 }
 .hero-enter .identity-actions {
   animation: hero-content-in 0.85s 0.4s var(--ease) both;
@@ -388,10 +395,10 @@
     font-size: 10px;
   }
   .identity-copy {
-    bottom: 110px;
+    bottom: 120px;
   }
   .identity-name {
-    font-size: clamp(120px, 24vw, 175px);
+    font-size: clamp(48px, 14vw, 96px);
   }
   .identity-actions {
     left: 22px;
@@ -401,17 +408,22 @@
     gap: 12px;
   }
   .hero-button {
-    padding: 13px 20px;
-    gap: 22px;
+    padding: 13px 16px;
+    gap: 14px;
   }
   .identity-greeting {
-    font-size: 11px;
+    font-size: clamp(24px, 6vw, 32px);
+    margin-bottom: 16px;
   }
-  .identity-role {
-    font-size: 11px;
+  .identity-tagline {
+    font-size: 13px;
+    margin-top: 22px;
   }
   .identity-image img {
     object-position: 50% 50%;
+  }
+  .identity-visual {
+    inset: 21% 16% 41%;
   }
 }
 @media (max-width: 600px) {
@@ -447,10 +459,13 @@
     min-height: 540px;
   }
   .identity-name {
-    font-size: 125px;
+    font-size: clamp(64px, 8vw, 92px);
+  }
+  .identity-greeting {
+    font-size: 26px;
   }
   .identity-copy {
-    bottom: 24px;
+    bottom: 105px;
   }
   .hero-scroll {
     margin-bottom: 15px;
