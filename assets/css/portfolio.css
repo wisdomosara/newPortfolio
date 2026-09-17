@@ -94,6 +94,17 @@ img {
   max-width: 100%;
   height: auto;
 }
+.icon-arrow {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: none;
+  vertical-align: -0.15em;
+}
+.contact-arrow .icon-arrow {
+  display: block;
+  stroke-width: 0.9;
+}
 h1,
 h2,
 h3,

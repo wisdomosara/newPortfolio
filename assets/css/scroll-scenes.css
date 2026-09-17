@@ -175,6 +175,8 @@
 .process-section {
   background: #181918;
   color: #f0efe9;
+  /* Contain entrance motion without creating another scroll container. */
+  overflow-x: clip;
 }
 .process-layout {
   padding-block: 65px 85px;
@@ -241,7 +243,7 @@
   max-width: 260px;
 }
 .scroll-motion .process-scene h3 {
-  transform: translateX(calc((1 - var(--step-fill, 1)) * 32px));
+  transform: translateX(calc((1 - var(--step-fill, 1)) * min(32px, var(--gutter))));
   opacity: calc(0.45 + var(--step-fill, 1) * 0.55);
 }
 .scroll-motion .process-scene > p {
