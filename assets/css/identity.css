@@ -43,14 +43,14 @@
   backdrop-filter: blur(12px);
 }
 .site-header .desktop-nav a {
-  font-size: 11px;
+  font-size: 14px;
   color: #deded9;
 }
 .site-header .header-contact {
   padding: 10px 17px;
   border: 1px solid #ffffff40;
   border-radius: 30px;
-  font-size: 11px;
+  font-size: 14px;
   gap: 15px;
   background: #15151540;
 }
@@ -75,11 +75,9 @@
 }
 .identity-visual {
   position: absolute;
-  inset: 12% 16% 18%;
+  inset: 0;
   z-index: -2;
   overflow: hidden;
-  border-radius: 6px;
-  mask-image: linear-gradient(#000 45%, transparent 100%);
 }
 .identity-image {
   position: absolute;
@@ -134,7 +132,7 @@
 }
 .identity-tagline {
   margin-top: 24px;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.5;
   color: #e0e0da;
 }
@@ -192,7 +190,7 @@
   border-radius: 40px;
   background: #f6f5f1;
   color: #171717;
-  font-size: 12px;
+  font-size: 14px;
   white-space: nowrap;
   transition:
     background 0.3s,
@@ -392,7 +390,7 @@
     padding: 12px 20px;
   }
   .site-header .desktop-nav a {
-    font-size: 10px;
+    font-size: 13px;
   }
   .identity-copy {
     bottom: 120px;
@@ -408,22 +406,23 @@
     gap: 12px;
   }
   .hero-button {
-    padding: 13px 16px;
-    gap: 14px;
+    padding: 13px 14px;
+    gap: 12px;
+    font-size: 13px;
   }
   .identity-greeting {
     font-size: clamp(24px, 6vw, 32px);
     margin-bottom: 16px;
   }
   .identity-tagline {
-    font-size: 13px;
+    font-size: 15px;
     margin-top: 22px;
   }
   .identity-image img {
     object-position: 50% 50%;
   }
-  .identity-visual {
-    inset: 21% 16% 41%;
+  .site-header .header-contact {
+    font-size: 13px;
   }
 }
 @media (max-width: 600px) {

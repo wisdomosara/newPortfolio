@@ -50,8 +50,8 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
   gap: 12px;
-  font-size: clamp(32px, 3.7vw, 62px);
-  line-height: 1.05;
+  font-size: clamp(26px, 2.5vw, 40px);
+  line-height: 1.15;
   letter-spacing: -0.045em;
 }
 .work-track .project-info h3 span {
@@ -68,17 +68,26 @@
   height: auto;
 }
 .work-track .project-info p {
-  font-size: 14px;
-  line-height: 1.8;
-  margin-top: 22px;
+  font-size: 16px;
+  color: #62665e;
+  line-height: 1.65;
+  margin-top: 18px;
 }
 .work-track .project-type {
   display: block;
   margin-top: 35px;
-  font-size: 10px;
+  font-size: 13px;
+  color: #5e625a;
+  line-height: 1.5;
+  white-space: normal;
 }
 .work-section {
   padding-bottom: 70px;
+}
+.work-section .section-aside {
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 340px;
 }
 /* A typographic introduction with a short, useful biography. */
 .about-section {
@@ -88,7 +97,7 @@
 .about-topline {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 16px;
   margin-bottom: 45px;
 }
 .about-topline span {
@@ -393,7 +402,7 @@
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 12px;
-    font-size: clamp(25px, 7.4vw, 32px);
+    font-size: 24px;
   }
   .work-track .project-info h3 span {
     display: grid;
@@ -406,7 +415,7 @@
     transform: none;
   }
   .work-track .project-info p {
-    font-size: 13px;
+    font-size: 16px;
     margin-top: 14px;
   }
   .work-track .project-type {
@@ -416,7 +425,7 @@
   }
   .about-topline {
     margin-bottom: 30px;
-    font-size: 11px;
+    font-size: 15px;
   }
   .about-statement {
     font-size: clamp(34px, 11vw, 60px);

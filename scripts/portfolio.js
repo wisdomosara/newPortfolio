@@ -203,7 +203,7 @@
     portfolio: {
       title: "Wisdom Osara",
       category: "PERSONAL PORTFOLIO",
-      image: "projects/wisdom-osara.jpg?v=personal-hero-1",
+      image: "projects/wisdom-osara.jpg?v=full-hero-2",
       alt: "The new Wisdom Osara portfolio hero with his name and full stack developer headline",
       description:
         "My portfolio, built around clean design and considered motion.",
