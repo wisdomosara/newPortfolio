@@ -1,0 +1,429 @@
+/* Cards remain in document order. Native sticky positioning creates the stack. */
+.work-runway,
+.work-pin,
+.work-window {
+  position: relative;
+}
+.work-track {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+.work-track .project-card {
+  margin: 0;
+}
+.work-track .project-link {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  align-items: center;
+  gap: 6vw;
+  background: var(--project-tone, #e8e5dd);
+  padding: clamp(25px, 4vw, 64px);
+  min-height: 520px;
+  overflow: clip;
+  border-radius: 4px;
+}
+.work-track .project-image {
+  background: transparent;
+  padding: 0;
+  aspect-ratio: 1.4;
+}
+.work-track .browser-frame {
+  transform: none;
+  border-radius: 0;
+}
+.work-track .browser-frame img {
+  aspect-ratio: auto;
+  object-fit: contain;
+  height: auto;
+}
+.dialog-tech[hidden],
+#dialog-note[hidden] {
+  display: none;
+}
+.work-track .project-info {
+  display: block;
+  padding: 0;
+}
+.work-track .project-info h3 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px;
+  font-size: clamp(32px, 3.7vw, 62px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+.work-track .project-info h3 span {
+  font-size: 0.6em;
+}
+.work-track .project-info p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-top: 22px;
+}
+.work-track .project-type {
+  display: block;
+  margin-top: 35px;
+  font-size: 10px;
+}
+.work-section {
+  padding-bottom: 70px;
+}
+/* A typographic introduction with a short, useful biography. */
+.about-section {
+  background: #eeede7;
+  padding-block: clamp(65px, 7vw, 110px) 0;
+}
+.about-topline {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 45px;
+}
+.about-topline span {
+  color: #74746d;
+}
+.about-statement {
+  font-family: "Anton", "Arial Narrow", sans-serif;
+  font-size: clamp(58px, 8.8vw, 142px);
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 1.16;
+}
+.about-statement > span {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+}
+.about-statement > span:last-child {
+  margin-left: 18%;
+}
+.about-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 45px;
+}
+.about-bottom > p {
+  max-width: 410px;
+  font-size: 17px;
+  line-height: 1.7;
+  letter-spacing: -0.015em;
+}
+.about-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 35px;
+  border: 1px solid #bfc0b7;
+  border-radius: 40px;
+  padding: 16px 23px;
+  font-size: 12px;
+  white-space: nowrap;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+.about-resume span {
+  font-size: 23px;
+  line-height: 1;
+}
+.about-resume:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.about-tools {
+  margin: 55px 0 0;
+  padding: 27px 0;
+  border-top: 1px solid #d0d0c6;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  list-style: none;
+  color: #676960;
+  font-size: clamp(13px, 1.5vw, 20px);
+  letter-spacing: -0.03em;
+}
+.about-tools li + li::before {
+  content: "/";
+  color: #b8b9b0;
+  margin-right: clamp(15px, 4vw, 70px);
+}
+.scroll-motion .about-statement > span {
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    #252621 calc(var(--line-fill, 1) * 100%),
+    #b9bab0 0
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  transform: translateX(calc((1 - var(--line-fill, 1)) * 24px));
+}
+/* Three full-width rows replace the long, numbered slideshow. */
+.process-section {
+  background: #181918;
+  color: #f0efe9;
+}
+.process-layout {
+  padding-block: 65px 85px;
+}
+.process-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 32px;
+}
+.process-intro .section-kicker {
+  margin: 0;
+  color: #a7aaa2;
+  font-size: 12px;
+}
+.process-intro h2 {
+  font-size: 22px;
+  letter-spacing: -0.03em;
+}
+.process-scenes {
+  display: grid;
+}
+.process-scene {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 70px 1fr minmax(210px, 0.48fr);
+  align-items: center;
+  gap: 25px;
+  min-height: 210px;
+  padding: 36px 0;
+  border-top: 1px solid #ffffff25;
+}
+.process-scene:last-child {
+  border-bottom: 1px solid #ffffff25;
+}
+.process-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0 calc(var(--gutter) * -1);
+  z-index: -1;
+  background: #242624;
+  transform: scaleX(var(--step-fill, 0));
+  transform-origin: left;
+}
+.process-index {
+  align-self: start;
+  padding-top: 12px;
+  font-size: 11px;
+  color: #93998e;
+}
+.process-scene h3 {
+  font-family: "Anton", "Arial Narrow", sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(60px, 7vw, 110px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.process-scene > p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #b8bcb3;
+  max-width: 260px;
+}
+.scroll-motion .process-scene h3 {
+  transform: translateX(calc((1 - var(--step-fill, 1)) * 32px));
+  opacity: calc(0.45 + var(--step-fill, 1) * 0.55);
+}
+.scroll-motion .process-scene > p {
+  transform: translateY(calc((1 - var(--step-fill, 1)) * 18px));
+}
+/* Reversible, scroll-scrubbed motion is separate from one-time entrances. */
+.scroll-motion .contact-hero {
+  overflow: clip;
+}
+.scroll-motion .contact-hero h2 {
+  transform: translateY(calc((1 - var(--contact-progress, 1)) * 90px));
+}
+/* Deliberate, staggered title entrances once the heading is in view. */
+.js-motion .reveal {
+  transition:
+    opacity 1s cubic-bezier(0.25, 0.8, 0.25, 1),
+    transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.heading-line {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.heading-line > span {
+  display: block;
+}
+.js-motion .section-heading.reveal .heading-line > span {
+  transform: translateY(112%);
+  transition: transform 1.15s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.js-motion .section-heading.reveal .heading-line:nth-child(2) > span {
+  transition-delay: 0.16s;
+}
+.js-motion .section-heading.reveal.is-visible .heading-line > span {
+  transform: translateY(0);
+}
+@media (min-width: 901px) and (min-height: 650px) and (prefers-reduced-motion: no-preference) {
+  .scroll-scenes .work-track {
+    gap: 12svh;
+    padding-bottom: 12svh;
+  }
+  .scroll-scenes .work-track .project-card {
+    position: sticky;
+    top: calc(30px + var(--card-index, 0) * 10px);
+    padding-top: 0;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .scroll-scenes .work-track .project-link {
+    min-height: 0;
+    height: calc(100svh - 120px);
+    max-height: 850px;
+    transform: scale(var(--stack-scale, 1)) rotate(var(--stack-rotate, 0deg));
+    transform-origin: center top;
+    filter: brightness(var(--stack-light, 1));
+    will-change: transform;
+  }
+  .scroll-scenes .work-track .project-image {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+  .scroll-scenes .work-track .project-image img {
+    transform: scale(var(--image-scale, 1));
+    transition: none;
+  }
+}
+@media (max-width: 900px) {
+  .work-track .project-link {
+    min-height: 400px;
+    gap: 30px;
+  }
+  .process-scene {
+    grid-template-columns: 35px 1fr 190px;
+    gap: 20px;
+    min-height: 175px;
+  }
+  .process-scene h3 {
+    font-size: clamp(46px, 7vw, 68px);
+  }
+  .process-scene > p {
+    font-size: 12px;
+  }
+  .about-tools li + li::before {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .work-track {
+    gap: 30px;
+  }
+  .work-track .project-link {
+    display: block;
+    min-height: 0;
+    padding: 22px;
+  }
+  .work-track .project-image {
+    aspect-ratio: 1.3;
+  }
+  .work-track .browser-frame img {
+    aspect-ratio: auto;
+    object-fit: contain;
+    height: auto;
+  }
+  .dialog-tech[hidden],
+  #dialog-note[hidden] {
+    display: none;
+  }
+  .work-track .project-info {
+    padding-top: 24px;
+  }
+  .work-track .project-info h3 {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 12px;
+    font-size: 30px;
+  }
+  .work-track .project-info p {
+    font-size: 13px;
+    margin-top: 14px;
+  }
+  .work-track .project-type {
+    margin-top: 20px;
+  }
+  .about-topline {
+    margin-bottom: 30px;
+    font-size: 11px;
+  }
+  .about-statement {
+    font-size: clamp(34px, 11vw, 60px);
+    line-height: 1.25;
+  }
+  .about-statement > span:last-child {
+    margin-left: 9%;
+  }
+  .about-bottom {
+    margin-top: 30px;
+    display: block;
+  }
+  .about-bottom > p {
+    font-size: 15px;
+    max-width: 320px;
+  }
+  .about-resume {
+    margin-top: 24px;
+    padding: 12px 18px;
+  }
+  .about-tools {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px 22px;
+    margin-top: 35px;
+    padding-block: 25px;
+    font-size: 14px;
+  }
+  .process-layout {
+    padding-block: 45px 55px;
+  }
+  .process-intro {
+    display: block;
+    padding-bottom: 28px;
+  }
+  .process-intro h2 {
+    font-size: 24px;
+    margin-top: 12px;
+  }
+  .process-scene {
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    padding-block: 28px;
+    min-height: 0;
+  }
+  .process-index {
+    padding-top: 7px;
+  }
+  .process-scene h3 {
+    font-size: clamp(40px, 10vw, 60px);
+  }
+  .process-scene > p {
+    grid-column: 2;
+    font-size: 13px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js-motion .section-heading.reveal .heading-line > span {
+    transform: none;
+    transition: none;
+  }
+  .process-scene::before {
+    transform: none;
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,484 @@
+@font-face {
+  font-family: "Anton";
+  src: url("../fonts/anton-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+/* Full-bleed photographic hero, with quiet navigation floating above it. */
+.site-header {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 88px;
+  border: 0;
+  background: transparent;
+  color: #f6f5f1;
+  padding-inline: 32px;
+}
+.site-header .wordmark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  font-size: 16px;
+  letter-spacing: -1px;
+  font-weight: 500;
+  border: 1px solid #ffffff35;
+  border-radius: 50%;
+}
+.site-header .wordmark-dot {
+  display: none;
+}
+.site-header .desktop-nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  gap: 30px;
+  padding: 14px 26px;
+  background: #15151565;
+  border: 1px solid #ffffff20;
+  border-radius: 40px;
+  backdrop-filter: blur(12px);
+}
+.site-header .desktop-nav a {
+  font-size: 11px;
+  color: #deded9;
+}
+.site-header .header-contact {
+  padding: 10px 17px;
+  border: 1px solid #ffffff40;
+  border-radius: 30px;
+  font-size: 11px;
+  gap: 15px;
+  background: #15151540;
+}
+.site-header .header-contact span {
+  font-size: 17px;
+}
+.site-header a:focus-visible,
+.site-header button:focus-visible,
+.identity-hero a:focus-visible {
+  outline-color: #fff;
+}
+.identity-hero {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100svh;
+  min-height: 640px;
+  padding: 0;
+  overflow: clip;
+  background: #151515;
+  color: #f6f5f1;
+}
+.identity-visual {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+.identity-image {
+  position: absolute;
+  inset: 0;
+}
+.identity-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 54%;
+  filter: grayscale(1) brightness(0.65);
+  transform: scale(calc(1.035 + var(--hero-drift, 0) * 0.07))
+    translateY(calc(var(--hero-drift, 0) * 35px));
+}
+.identity-image .image-echo {
+  opacity: 0.13;
+  mix-blend-mode: screen;
+  transform: scale(1.06) translateX(calc(-2.5% - var(--hero-drift, 0) * 2%));
+  mask-image: linear-gradient(
+    90deg,
+    transparent 20%,
+    #000 45%,
+    transparent 80%
+  );
+}
+.identity-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, #0004 0%, transparent 32%, #0004 57%, #000c 100%),
+    linear-gradient(90deg, #0006, transparent 30%, transparent 70%, #0006);
+}
+.identity-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 42px;
+  text-align: center;
+  transform: translateY(calc(var(--hero-drift, 0) * -38px));
+}
+.identity-greeting {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.identity-role {
+  font-size: 12px;
+  color: #d2d2cc;
+}
+.identity-name {
+  font-family: "Anton", "Arial Narrow", sans-serif;
+  font-size: clamp(110px, 13vw, 220px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  margin-top: 13px;
+}
+.identity-name:focus {
+  outline: none;
+}
+.name-mask {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.04em;
+}
+.name-mask > span {
+  display: block;
+}
+.hero-scroll {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 22px;
+  border: 1px solid #ffffff55;
+  border-radius: 50%;
+  backdrop-filter: blur(6px);
+}
+.hero-scroll span {
+  font-size: 20px;
+  transition: transform 0.3s;
+}
+.hero-scroll:hover span {
+  transform: translateY(4px);
+}
+.identity-actions {
+  position: absolute;
+  bottom: 45px;
+  left: 32px;
+  right: 32px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.hero-button {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding: 14px 22px;
+  border-radius: 40px;
+  background: #f6f5f1;
+  color: #171717;
+  font-size: 12px;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+.hero-button span {
+  font-size: 18px;
+}
+.hero-button-outline {
+  color: #fff;
+  background: #15151530;
+  border: 1px solid #ffffff50;
+  backdrop-filter: blur(10px);
+}
+.hero-button:hover {
+  background: #dcded7;
+  color: #171717;
+}
+/* Five independent shutters leave in sequence, then the hero enters. */
+.intro-screen {
+  display: none;
+}
+.intro-pending {
+  scroll-behavior: auto;
+}
+.intro-pending body {
+  overflow: hidden;
+}
+.intro-pending .intro-screen {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper);
+}
+.intro-panels {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.intro-panels span {
+  background: #151515;
+  margin-right: -1px;
+  transform-origin: top;
+}
+.intro-panels span:nth-child(2) {
+  --delay: 0.09s;
+}
+.intro-panels span:nth-child(3) {
+  --delay: 0.18s;
+}
+.intro-panels span:nth-child(4) {
+  --delay: 0.27s;
+}
+.intro-panels span:nth-child(5) {
+  --delay: 0.36s;
+}
+.intro-message {
+  position: relative;
+  text-align: center;
+  margin-top: -25px;
+}
+.intro-message > p {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(100px, 17vw, 240px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+}
+.intro-message > p > span {
+  display: block;
+  animation: intro-greeting-in 0.65s var(--ease) both;
+}
+.intro-signature {
+  display: block;
+  color: #c8d6c3;
+  margin-top: 10px;
+  font-size: 14px;
+  animation: hero-content-in 0.6s 0.15s var(--ease) both;
+}
+.intro-skip {
+  position: absolute;
+  bottom: 30px;
+  right: var(--gutter);
+  background: none;
+  color: var(--paper);
+  padding: 12px;
+  font-size: 12px;
+  display: flex;
+  gap: 25px;
+}
+.intro-skip:focus-visible {
+  outline: 1px solid #d7dec5;
+  outline-offset: 3px;
+}
+.intro-leaving .intro-panels span {
+  animation: intro-panel-away 0.78s var(--delay, 0s)
+    cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+.intro-leaving .intro-message,
+.intro-leaving .intro-skip {
+  opacity: 0;
+  transform: translateY(-25px);
+  transition:
+    opacity 0.22s,
+    transform 0.4s;
+}
+.intro-pending .site-header,
+.intro-pending .hero-arrival,
+.intro-pending .hero-scroll {
+  opacity: 0;
+}
+.intro-pending .name-mask > span,
+.intro-pending .name-mask > em {
+  opacity: 0;
+  transform: translateY(110%);
+}
+.hero-enter .site-header {
+  animation: hero-content-in 0.7s var(--ease) both;
+}
+.hero-enter .identity-greeting,
+.hero-enter .identity-role {
+  animation: hero-content-in 0.7s 0.1s var(--ease) both;
+}
+.hero-enter .name-mask > span {
+  animation: hero-name-in 1s 0.12s var(--ease) both;
+}
+.hero-enter .name-mask > em {
+  animation: hero-name-in 1s 0.25s var(--ease) both;
+}
+.hero-enter .identity-actions {
+  animation: hero-content-in 0.85s 0.4s var(--ease) both;
+}
+.hero-enter .identity-visual {
+  animation: hero-image-in 1.25s 0.12s var(--ease) both;
+}
+.hero-enter .hero-scroll {
+  animation: hero-content-in 0.85s 0.6s var(--ease) both;
+}
+@keyframes intro-greeting-in {
+  from {
+    transform: translateY(115%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes intro-panel-away {
+  to {
+    transform: translateY(-101%);
+  }
+}
+@keyframes hero-name-in {
+  from {
+    opacity: 0;
+    transform: translateY(110%) rotate(3deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+@keyframes hero-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes hero-image-in {
+  from {
+    opacity: 0;
+    transform: scale(1.07);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media (max-width: 700px) {
+  .site-header {
+    height: 76px;
+    padding-inline: 22px;
+  }
+  .site-header .desktop-nav {
+    gap: 20px;
+    padding: 12px 20px;
+  }
+  .site-header .desktop-nav a {
+    font-size: 10px;
+  }
+  .identity-copy {
+    bottom: 110px;
+  }
+  .identity-name {
+    font-size: clamp(120px, 24vw, 175px);
+  }
+  .identity-actions {
+    left: 22px;
+    right: 22px;
+    bottom: 32px;
+    justify-content: center;
+    gap: 12px;
+  }
+  .hero-button {
+    padding: 13px 20px;
+    gap: 22px;
+  }
+  .identity-greeting {
+    font-size: 11px;
+  }
+  .identity-role {
+    font-size: 11px;
+  }
+  .identity-image img {
+    object-position: 50% 50%;
+  }
+}
+@media (max-width: 600px) {
+  .site-header .menu-toggle span {
+    background: #f6f5f1;
+  }
+  .site-header .mobile-nav.is-open {
+    background: #181818;
+    color: #f6f5f1;
+    top: 76px;
+  }
+  .site-header .mobile-nav a {
+    border-color: #ffffff25;
+  }
+  .site-header .mobile-nav a span {
+    color: #bbb;
+  }
+  .js-enabled .site-header .header-contact {
+    margin-right: 18px;
+  }
+  .identity-hero {
+    min-height: 620px;
+  }
+  .hero-scroll {
+    margin-bottom: 22px;
+  }
+  .identity-image .image-echo {
+    opacity: 0.09;
+  }
+}
+@media (max-height: 650px) and (min-width: 701px) {
+  .identity-hero {
+    min-height: 540px;
+  }
+  .identity-name {
+    font-size: 125px;
+  }
+  .identity-copy {
+    bottom: 24px;
+  }
+  .hero-scroll {
+    margin-bottom: 15px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-screen {
+    display: none !important;
+  }
+  .intro-pending body {
+    overflow: visible;
+  }
+  .intro-pending .site-header,
+  .intro-pending .hero-arrival,
+  .intro-pending .hero-scroll,
+  .intro-pending .name-mask > * {
+    opacity: 1;
+    transform: none;
+  }
+  .hero-enter *,
+  .intro-screen * {
+    animation: none !important;
+  }
+  .identity-image img,
+  .identity-copy {
+    transform: none;
+  }
+  .identity-image .image-echo {
+    display: none;
+  }
+}
