@@ -249,10 +249,10 @@
 }
 /* Reversible, scroll-scrubbed motion is separate from one-time entrances. */
 .scroll-motion .contact-hero {
-  overflow: clip;
+  overflow: visible;
 }
 .scroll-motion .contact-hero h2 {
-  transform: translateY(calc((1 - var(--contact-progress, 1)) * 90px));
+  transform: translateY(calc((1 - var(--contact-progress, 1)) * 32px));
 }
 /* Deliberate, staggered title entrances once the heading is in view. */
 .js-motion .reveal {

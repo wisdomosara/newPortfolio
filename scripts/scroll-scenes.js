@@ -13,6 +13,12 @@
   const contact = document.querySelector(".contact-section");
   const contactTitle = document.querySelector(".contact-hero");
   const clamp = (value) => Math.max(0, Math.min(1, value));
+  // Layout coordinates stay stable while reveal transforms animate the element.
+  function layoutTop(element) {
+    let top = 0;
+    for (let node = element; node; node = node.offsetParent) top += node.offsetTop;
+    return top;
+  }
   let frame = 0;
   let motion = false;
   let pinned = false;
@@ -21,14 +27,20 @@
     frame = 0;
     if (!motion || document.hidden) return;
     const height = innerHeight;
+    const maxScroll = Math.max(0, root.scrollHeight - height);
+    function revealProgress(top) {
+      // Near the footer, finish within the scroll distance that actually exists.
+      const start = Math.max(0, Math.min(top - height * 0.68, maxScroll));
+      const end = Math.max(start, Math.min(top - height * 0.25, maxScroll));
+      if (scrollY >= end - 1) return 1;
+      return clamp((scrollY - start) / Math.max(1, end - start));
+    }
     // Batch geometry reads before writes; native scrolling remains untouched.
     const cardRects = cards.map((card) => card.getBoundingClientRect());
-    const stageRects = stages.map((stage) => stage.getBoundingClientRect());
-    const lineRects = statementLines.map((line) =>
-      line.getBoundingClientRect(),
-    );
+    const stageTops = stages.map(layoutTop);
+    const lineTops = statementLines.map(layoutTop);
     const heroRect = hero.getBoundingClientRect();
-    const contactRect = contactTitle.getBoundingClientRect();
+    const contactTop = layoutTop(contactTitle);
     cards.forEach((card, i) => {
       const next = cardRects[i + 1];
       const overlap =
@@ -51,13 +63,13 @@
     statementLines.forEach((line, i) =>
       line.style.setProperty(
         "--line-fill",
-        clamp((height * 0.68 - lineRects[i].top) / (height * 0.43)),
+        revealProgress(lineTops[i]),
       ),
     );
     stages.forEach((stage, i) =>
       stage.style.setProperty(
         "--step-fill",
-        clamp((height * 0.68 - stageRects[i].top) / (height * 0.43)),
+        revealProgress(stageTops[i]),
       ),
     );
     hero.style.setProperty(
@@ -66,7 +78,7 @@
     );
     contact.style.setProperty(
       "--contact-progress",
-      clamp((height * 0.68 - contactRect.top) / (height * 0.43)),
+      revealProgress(contactTop),
     );
   }
   function schedule() {
