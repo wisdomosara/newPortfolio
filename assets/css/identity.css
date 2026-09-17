@@ -316,7 +316,7 @@
   transform: translateY(110%);
 }
 .hero-enter .site-header {
-  animation: hero-content-in 0.7s var(--ease) both;
+  animation: hero-content-in 0.7s var(--ease) backwards;
 }
 .hero-enter .identity-greeting {
   animation: hero-content-in 0.7s 0.1s var(--ease) both;
@@ -427,16 +427,73 @@
   }
 }
 @media (max-width: 600px) {
+  .nav-open {
+    overflow: hidden;
+  }
+  .nav-open body {
+    position: fixed;
+    top: var(--nav-scroll-top, 0px);
+    width: 100%;
+    overflow: hidden;
+  }
+  .nav-active .site-header {
+    position: fixed;
+    animation: none;
+    transform: none;
+  }
   .site-header .menu-toggle span {
     background: #f6f5f1;
   }
-  .site-header .mobile-nav.is-open {
+  .js-enabled .site-header .mobile-nav {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    height: 100vh;
+    height: 100dvh;
     background: #181818;
     color: #f6f5f1;
-    top: 76px;
+    flex-direction: column;
+    justify-content: center;
+    padding: max(100px, env(safe-area-inset-top)) var(--gutter)
+      max(40px, env(safe-area-inset-bottom));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-shadow: none;
+    visibility: hidden;
+    pointer-events: none;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.6s cubic-bezier(0.76, 0, 0.24, 1),
+      visibility 0s 0.6s;
+  }
+  .js-enabled .site-header .mobile-nav.is-open {
+    visibility: visible;
+    pointer-events: auto;
+    clip-path: inset(0);
+    transition-delay: 0s;
   }
   .site-header .mobile-nav a {
+    flex: none;
     border-color: #ffffff25;
+    font-size: clamp(26px, 7.5vw, 44px);
+    padding-block: clamp(20px, 3.5dvh, 36px);
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.2s, transform 0.3s;
+  }
+  .site-header .mobile-nav.is-open a {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.5s var(--ease), transform 0.7s var(--ease);
+    transition-delay: calc(0.16s + var(--nav-order, 0) * 0.07s);
+  }
+  .mobile-nav a:nth-child(2) { --nav-order: 1; }
+  .mobile-nav a:nth-child(3) { --nav-order: 2; }
+  .mobile-nav a:nth-child(4) { --nav-order: 3; }
+  @media (max-height: 550px) {
+    .js-enabled .site-header .mobile-nav {
+      justify-content: flex-start;
+    }
   }
   .site-header .mobile-nav a span {
     color: #bbb;
@@ -472,6 +529,10 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .js-enabled .site-header .mobile-nav,
+  .site-header .mobile-nav a {
+    transition: none;
+  }
   .intro-screen {
     display: none !important;
   }

@@ -56,32 +56,81 @@
   // The mobile menu stays out of the keyboard order while closed.
   const menuButton = document.querySelector(".menu-toggle");
   const menu = document.querySelector(".mobile-nav");
+  const header = document.querySelector(".site-header");
+  const main = document.querySelector("main");
+  const skipLink = document.querySelector(".skip-link");
+  let menuScrollY = 0;
+  let menuExitTimer;
   function closeMenu(returnFocus = false) {
+    if (!menu.classList.contains("is-open")) return;
     menu.classList.remove("is-open");
     menu.inert = true;
+    main.inert = false;
+    skipLink.inert = false;
+    root.classList.remove("nav-open");
+    root.style.removeProperty("--nav-scroll-top");
+    const scrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, menuScrollY);
+    root.style.scrollBehavior = scrollBehavior;
+    clearTimeout(menuExitTimer);
+    menuExitTimer = setTimeout(() => root.classList.remove("nav-active"),
+      reducedMotion.matches ? 0 : 600);
     menuButton.setAttribute("aria-expanded", "false");
     menuButton.setAttribute("aria-label", "Open navigation");
     if (returnFocus) menuButton.focus();
   }
   menuButton.addEventListener("click", () => {
-    const opening = menuButton.getAttribute("aria-expanded") !== "true";
-    menuButton.setAttribute("aria-expanded", String(opening));
-    menuButton.setAttribute(
-      "aria-label",
-      opening ? "Close navigation" : "Open navigation",
-    );
-    menu.classList.toggle("is-open", opening);
-    menu.inert = !opening;
+    if (menu.classList.contains("is-open")) return closeMenu(true);
+    clearTimeout(menuExitTimer);
+    menuScrollY = scrollY;
+    root.style.setProperty("--nav-scroll-top", `${-menuScrollY}px`);
+    root.classList.add("nav-active", "nav-open");
+    main.inert = true;
+    skipLink.inert = true;
+    menuButton.setAttribute("aria-expanded", "true");
+    menuButton.setAttribute("aria-label", "Close navigation");
+    menu.classList.add("is-open");
+    menu.inert = false;
   });
-  menu
+  header
     .querySelectorAll("a")
-    .forEach((link) => link.addEventListener("click", () => closeMenu()));
+    .forEach((link) => link.addEventListener("click", (event) => {
+      if (!menu.classList.contains("is-open")) return;
+      const hash = link.getAttribute("href");
+      const target = hash?.startsWith("#") && document.querySelector(hash);
+      if (!target) return closeMenu(true);
+      // Closing makes the menu inert; navigate explicitly so Safari does not
+      // cancel the link's default action when its ancestor becomes inert.
+      event.preventDefault();
+      closeMenu();
+      if (location.hash !== hash) history.pushState(null, "", hash);
+      target.scrollIntoView({ behavior: reducedMotion.matches ? "instant" : "smooth" });
+      if (!target.hasAttribute("tabindex")) {
+        target.setAttribute("tabindex", "-1");
+        target.addEventListener("blur", () => target.removeAttribute("tabindex"), { once: true });
+      }
+      target.focus({ preventScroll: true });
+    }));
   document.addEventListener("keydown", (event) => {
-    if (
-      event.key === "Escape" &&
-      menuButton.getAttribute("aria-expanded") === "true"
-    )
+    if (!menu.classList.contains("is-open")) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
       closeMenu(true);
+    }
+    if (event.key === "Tab") {
+      const controls = [...header.querySelectorAll("a, button")]
+        .filter((element) => element.getClientRects().length > 0);
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
   });
   document.addEventListener("click", (event) => {
     if (!event.target.closest(".site-header")) closeMenu();
