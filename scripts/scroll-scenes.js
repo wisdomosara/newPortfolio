@@ -2,7 +2,7 @@
   "use strict";
   const root = document.documentElement;
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-  const roomy = matchMedia("(min-width: 901px) and (min-height: 650px)");
+  const roomy = matchMedia("(min-height: 600px)");
   const cards = [...document.querySelectorAll(".work-track .project-card")];
   const track = document.querySelector(".work-track");
   const stages = [...document.querySelectorAll(".process-scene")];
@@ -77,6 +77,13 @@
     pinned = motion && roomy.matches;
     root.classList.toggle("scroll-motion", motion);
     root.classList.toggle("scroll-scenes", pinned);
+    // Keep every card readable in short viewports or with enlarged text.
+    if (pinned && cards.some((card) =>
+      card.offsetHeight + parseFloat(getComputedStyle(card).top) + 24 > innerHeight
+    )) {
+      pinned = false;
+      root.classList.remove("scroll-scenes");
+    }
     if (!motion) {
       cancelAnimationFrame(frame);
       frame = 0;
@@ -102,17 +109,17 @@
         scrollY +
         track.getBoundingClientRect().top +
         before -
-        (30 + index * 10);
+        parseFloat(getComputedStyle(card).top);
       window.scrollTo({ top: target, behavior: "smooth" });
     }),
   );
   window.addEventListener("scroll", schedule, { passive: true });
-  window.addEventListener("resize", schedule, { passive: true });
+  window.addEventListener("resize", configure, { passive: true });
   window.addEventListener("pageshow", configure);
   document.addEventListener("visibilitychange", schedule);
   document.addEventListener("portfolio:intro-ready", schedule);
   reduced.addEventListener("change", configure);
   roomy.addEventListener("change", configure);
-  document.fonts?.ready.then(schedule);
+  document.fonts?.ready.then(configure);
   configure();
 })();

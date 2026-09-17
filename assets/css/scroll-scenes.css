@@ -56,6 +56,16 @@
 }
 .work-track .project-info h3 span {
   font-size: 0.6em;
+  margin: 0;
+}
+.project-info h3 svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+.work-track .project-view {
+  bottom: auto;
+  height: auto;
 }
 .work-track .project-info p {
   font-size: 14px;
@@ -269,14 +279,14 @@
 .js-motion .section-heading.reveal.is-visible .heading-line > span {
   transform: translateY(0);
 }
-@media (min-width: 901px) and (min-height: 650px) and (prefers-reduced-motion: no-preference) {
+@media (min-height: 600px) and (prefers-reduced-motion: no-preference) {
   .scroll-scenes .work-track {
     gap: 12svh;
     padding-bottom: 12svh;
   }
   .scroll-scenes .work-track .project-card {
     position: sticky;
-    top: calc(30px + var(--card-index, 0) * 10px);
+    top: calc(var(--stack-top, 30px) + var(--card-index, 0) * var(--stack-step, 10px));
     padding-top: 0;
     opacity: 1;
     transform: none;
@@ -301,6 +311,17 @@
   }
 }
 @media (max-width: 900px) {
+  .work-track {
+    --stack-top: 16px;
+    --stack-step: 7px;
+  }
+  .scroll-scenes .work-track {
+    gap: 32px;
+    padding-bottom: 40px;
+  }
+  .work-track .project-view {
+    display: none;
+  }
   .work-track .project-link {
     min-height: 400px;
     gap: 30px;
@@ -321,16 +342,33 @@
   }
 }
 @media (max-width: 600px) {
+  .work-section .section-aside {
+    max-width: 270px;
+    margin-top: 18px;
+  }
   .work-track {
-    gap: 30px;
+    gap: 24px;
   }
   .work-track .project-link {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 22px;
     min-height: 0;
-    padding: 22px;
+    padding: 20px;
+  }
+  .scroll-scenes .work-track .project-link {
+    height: auto;
+    min-height: clamp(420px, 60svh, 480px);
+    max-height: none;
   }
   .work-track .project-image {
-    aspect-ratio: 1.3;
+    aspect-ratio: 1.6;
+    height: auto;
+    flex: none;
+  }
+  .work-track .browser-frame {
+    margin-top: 0;
   }
   .work-track .browser-frame img {
     aspect-ratio: auto;
@@ -342,21 +380,37 @@
     display: none;
   }
   .work-track .project-info {
-    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-top: 0;
+    align-items: stretch;
   }
   .work-track .project-info h3 {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    align-items: start;
+    align-items: center;
     gap: 12px;
-    font-size: 30px;
+    font-size: clamp(25px, 7.4vw, 32px);
+  }
+  .work-track .project-info h3 span {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #25262140;
+    border-radius: 50%;
+    font-size: 20px;
+    transform: none;
   }
   .work-track .project-info p {
     font-size: 13px;
     margin-top: 14px;
   }
   .work-track .project-type {
-    margin-top: 20px;
+    margin-top: auto;
+    padding-top: 22px;
+    white-space: normal;
   }
   .about-topline {
     margin-bottom: 30px;
@@ -415,6 +469,14 @@
   .process-scene > p {
     grid-column: 2;
     font-size: 13px;
+  }
+}
+@media (hover: none) {
+  .work-track .project-view {
+    display: none;
+  }
+  .work-track .project-link:hover .browser-frame {
+    transform: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {

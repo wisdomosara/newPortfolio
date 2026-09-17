@@ -1122,10 +1122,10 @@ summary::-webkit-details-marker {
     display: block;
   }
   .project-card {
-    margin: 0 0 36px !important;
+    margin: 0 0 36px;
   }
   .project-card:last-child {
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
   }
   .project-image {
     aspect-ratio: 1.22;
