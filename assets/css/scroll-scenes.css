@@ -75,11 +75,26 @@
 }
 .work-track .project-type {
   display: block;
-  margin-top: 35px;
+  margin-top: 24px;
   font-size: 13px;
   color: #5e625a;
   line-height: 1.5;
   white-space: normal;
+}
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 14px;
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid #25262126;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #39473f;
+}
+.project-technologies li {
+  max-width: 100%;
 }
 .work-section {
   padding-bottom: 70px;
@@ -396,6 +411,7 @@
     flex: 1;
     padding-top: 0;
     align-items: stretch;
+    gap: 0;
   }
   .work-track .project-info h3 {
     display: grid;

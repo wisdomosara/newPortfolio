@@ -170,7 +170,7 @@
       alt: "Properties Haven hero with a Nigerian property search over a waterfront skyline",
       description:
         "Property discovery across Nigeria, with natural-language search.",
-      technologies: [],
+      technologies: ["Next.js", "Tailwind CSS", "Express", "MongoDB", "PostHog", "AI automations"],
       url: "https://www.propertieshaven.com/",
     },
     parallel: {
@@ -179,16 +179,17 @@
       image: "projects/parallel.jpg",
       alt: "Parallel hero with Find your life’s work and job search",
       description: "Helping people find work that fits.",
-      technologies: [],
+      technologies: ["Next.js", "Tailwind CSS", "LoopBack.js", "Node.js", "AI automations"],
       url: "https://www.useparallel.com/",
     },
     worlds: {
       title: "Worlds",
-      category: "EARLY ACCESS",
+      category: "MOBILE APP + WEBSITE",
       image: "projects/worlds.jpg",
       alt: "Worlds hero with microdose humanity and early-access signup",
-      description: "An expressive early-access launch experience.",
-      technologies: [],
+      description: "An iOS and Android mobile app with real-time calling, built with React Native, Express and MongoDB. The companion website is built with Next.js.",
+      note: "Available on the App Store and Google Play.",
+      technologies: ["React Native", "Express", "MongoDB", "Real-time calls", "Next.js (website)"],
       url: "https://wrlds.co/",
     },
     growlarge: {
