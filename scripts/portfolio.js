@@ -57,6 +57,11 @@
   const menuButton = document.querySelector(".menu-toggle");
   const menu = document.querySelector(".mobile-nav");
   const header = document.querySelector(".site-header");
+  // Consume the intro once. Removing nav-active must not replay it on close.
+  header.addEventListener("animationend", (event) => {
+    if (event.target === header && event.animationName === "hero-content-in")
+      header.classList.add("has-entered");
+  });
   const main = document.querySelector("main");
   const skipLink = document.querySelector(".skip-link");
   let menuScrollY = 0;
@@ -83,6 +88,8 @@
   menuButton.addEventListener("click", () => {
     if (menu.classList.contains("is-open")) return closeMenu(true);
     clearTimeout(menuExitTimer);
+    // Also finish the entrance if the menu is opened before it has completed.
+    header.classList.add("has-entered");
     menuScrollY = scrollY;
     root.style.setProperty("--nav-scroll-top", `${-menuScrollY}px`);
     root.classList.add("nav-active", "nav-open");

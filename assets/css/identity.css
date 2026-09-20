@@ -313,7 +313,7 @@
   opacity: 0;
   transform: translateY(110%);
 }
-.hero-enter .site-header {
+.hero-enter .site-header:not(.has-entered) {
   animation: hero-content-in 0.7s var(--ease) backwards;
 }
 .hero-enter .identity-greeting {
