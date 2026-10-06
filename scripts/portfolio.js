@@ -170,6 +170,17 @@
   });
 
   const projects = {
+    procure: {
+      title: "Procure",
+      category: "PROCUREMENT PLATFORM",
+      image: "projects/procure.jpg",
+      alt: "Procure homepage with Less chasing, More progress and a purchasing workspace preview",
+      description:
+        "A procurement platform connecting requests, approvals, orders, and deliveries.",
+      technologies: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL"],
+      url: "https://procure-platform-nine.vercel.app/",
+      note: "Personal project. Public preview is live; company accounts are not enabled yet.",
+    },
     haven: {
       title: "Properties Haven",
       category: "PROPERTY PLATFORM",

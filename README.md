@@ -21,11 +21,11 @@ Open http://127.0.0.1:4173.
 - `assets/css/scroll-scenes.css`: pinned showcase and process section styles.
 - `scripts/scroll-scenes.js`: stacked project panels, sticky process progress, and scroll-triggered text/image effects.
 - `scripts/portfolio.js`: project preview content, navigation, motion, and accessibility preferences.
-- `assets/images/projects/`: live hero screenshots from the four product sites plus the local portfolio redesign.
+- `assets/images/projects/`: live hero screenshots from the product sites plus the local portfolio redesign.
 - `assets/images/`: original assets, including the retained Global Adventures screenshot. The portrait is not displayed.
 - `resumedev.pdf`: approved one-page CV, with current Properties Haven and Parallel roles. The résumé link includes a content version so returning visitors receive the updated file.
 
-When changing a project, update both its HTML link/card and its entry in the `projects` object. Global Adventures is retained from the original portfolio. Current selected products: Properties Haven, Parallel, Worlds, GrowLarge Digital, Wisdom Osara, and Global Adventures. Properties Haven, Parallel and Worlds show the technology stacks provided by Wisdom. Worlds is an iOS and Android mobile app with real-time calling and a Next.js companion website. GrowLarge’s stack remains unspecified until confirmed.
+When changing a project, update both its HTML link/card and its entry in the `projects` object. Global Adventures is retained from the original portfolio. Current selected products: Procure, Properties Haven, Parallel, Worlds, GrowLarge Digital, Wisdom Osara, and Global Adventures. Properties Haven, Parallel and Worlds show the technology stacks provided by Wisdom. Worlds is an iOS and Android mobile app with real-time calling and a Next.js companion website. GrowLarge’s stack remains unspecified until confirmed.
 
 Animation follows the device’s reduced-motion preference automatically. The full-screen hero uses a full-bleed monochrome studio image, subtle image layering, floating navigation, a prominent name, and an oversized two-line “Full stack developer.” headline. A short creativity line and two links complete the introduction. It stays face-free. Anton is self-hosted alongside its OFL license. Five staggered shutters animate away before the hero reveals; skip and Escape dismiss them. Deep links and reduced motion bypass the intro. The mobile navigation covers the viewport with a curtain entrance and staggered links, locks background scrolling, and keeps keyboard focus in the menu until dismissal. Without JavaScript, content remains visible.
 
@@ -36,6 +36,8 @@ The hero loads responsive WebP images: `studio.webp` (1536 × 1024, 80,822 bytes
 `assets/images/studio.jpg` is a decorative AI-generated studio photograph, not a depiction of Wisdom’s actual workspace. Created with the built-in image generation tool. Prompt: “Landscape editorial photograph for a minimalist developer portfolio: a brushed aluminium laptop on a dark walnut desk in a quiet modernist studio, late afternoon sunlight, architectural shadows, olive-grey plaster, forest green shadows and warm ivory highlights. No people, faces, logos, text, or graphics.”
 
 Legacy Bootstrap, jQuery, and WOW assets remain in the repository for reference, but the redesigned page does not load them.
+
+Procure is a personal procurement project built with Next.js, React, TypeScript, Supabase and PostgreSQL. Its public preview is live; company accounts are not enabled yet. The project dialog states that limitation.
 
 ## Hero captures
 
@@ -48,3 +50,5 @@ Captured from the rendered websites on 2026-09-17. JPEGs are the production asse
 - `wisdom-osara`: http://127.0.0.1:4173/ (the new design); its card links to https://wisdomosara.com/.
 
 The old archive is no longer displayed. Original source images remain in the repository.
+
+Procure’s homepage screenshot was captured from https://procure-platform-nine.vercel.app/ on 2026-10-06 and is stored as `assets/images/projects/procure.jpg`.
