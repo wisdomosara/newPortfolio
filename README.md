@@ -21,11 +21,11 @@ Open http://127.0.0.1:4173.
 - `assets/css/scroll-scenes.css`: pinned showcase and process section styles.
 - `scripts/scroll-scenes.js`: stacked project panels, sticky process progress, and scroll-triggered text/image effects.
 - `scripts/portfolio.js`: project preview content, navigation, motion, and accessibility preferences.
-- `assets/images/projects/`: live hero screenshots from the product sites plus the local portfolio redesign.
+- `assets/images/projects/`: live hero screenshots from the product sites, the local portfolio redesign, and a Fredelle Jewels product photograph.
 - `assets/images/`: original assets, including the retained Global Adventures screenshot. The portrait is not displayed.
 - `resumedev.pdf`: approved one-page CV, with current Properties Haven and Parallel roles. The résumé link includes a content version so returning visitors receive the updated file.
 
-When changing a project, update both its HTML link/card and its entry in the `projects` object. Global Adventures is retained from the original portfolio. Current selected products: Properties Haven, Parallel, Worlds, GrowLarge Digital, Wisdom Osara, Procure, and Global Adventures. Properties Haven, Parallel and Worlds show the technology stacks provided by Wisdom. Worlds is an iOS and Android mobile app with real-time calling and a Next.js companion website. GrowLarge’s stack remains unspecified until confirmed.
+When changing a project, update both its HTML link/card and its entry in the `projects` object. Global Adventures is retained from the original portfolio. Current selected products: Properties Haven, Parallel, Worlds, GrowLarge Digital, Wisdom Osara, Procure, Fredelle Jewels, and Global Adventures. Properties Haven, Parallel and Worlds show the technology stacks provided by Wisdom. Worlds is an iOS and Android mobile app with real-time calling and a Next.js companion website. GrowLarge’s stack remains unspecified until confirmed.
 
 Animation follows the device’s reduced-motion preference automatically. The full-screen hero uses a full-bleed monochrome studio image, subtle image layering, floating navigation, a prominent name, and an oversized two-line “Full stack developer.” headline. A short creativity line and two links complete the introduction. It stays face-free. Anton is self-hosted alongside its OFL license. Five staggered shutters animate away before the hero reveals; skip and Escape dismiss them. Deep links and reduced motion bypass the intro. The mobile navigation covers the viewport with a curtain entrance and staggered links, locks background scrolling, and keeps keyboard focus in the menu until dismissal. Without JavaScript, content remains visible.
 
@@ -52,3 +52,5 @@ Captured from the rendered websites on 2026-09-17. JPEGs are the production asse
 The old archive is no longer displayed. Original source images remain in the repository.
 
 Procure’s homepage screenshot was captured from https://procure-platform-nine.vercel.app/ on 2026-10-06 and is stored as `assets/images/projects/procure.jpg`.
+
+Fredelle Jewels is a Next.js App Router storefront built with React, TypeScript, and CSS animations. Customers browse jewelry and open Instagram to place orders. Its project image, `assets/images/projects/fredelle-jewels.jpg`, is the brand’s gold disc necklace and earrings photograph copied from the storefront’s `public/assets/gold-disc.jpg`; it is a product photograph, not a website screenshot. The storefront is live at https://fredelle-jewels.vercel.app/.

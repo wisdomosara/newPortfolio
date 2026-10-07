@@ -170,6 +170,16 @@
   });
 
   const projects = {
+    fredelle: {
+      title: "Fredelle Jewels",
+      category: "JEWELRY STOREFRONT",
+      image: "projects/fredelle-jewels.jpg",
+      alt: "Fredelle Jewels gold disc necklace and matching drop earrings on a white display bust",
+      description:
+        "A white-and-gold jewelry storefront with animated collections, product details, and Instagram ordering.",
+      technologies: ["Next.js", "React", "TypeScript", "CSS animation"],
+      url: "https://fredelle-jewels.vercel.app/",
+    },
     procure: {
       title: "Procure",
       category: "PROCUREMENT PLATFORM",
