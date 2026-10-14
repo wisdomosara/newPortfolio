@@ -170,6 +170,17 @@
   });
 
   const projects = {
+    ember: {
+      title: "EMBER",
+      category: "RESTAURANT PLATFORM",
+      image: "projects/ember.png",
+      alt: "EMBER restaurant homepage with Good Food. Big Mood. and fire-grilled food imagery",
+      description:
+        "A fire-grill restaurant concept with scroll-driven animation, menu browsing, and an order-to-delivery workflow.",
+      technologies: ["Next.js", "React", "TypeScript", "Express", "MongoDB", "GSAP"],
+      url: "https://ember-restaurant-iota.vercel.app/",
+      note: "Personal project. Public preview is live; ordering and online payments are not enabled yet.",
+    },
     fredelle: {
       title: "Fredelle Jewels",
       category: "JEWELRY STOREFRONT",
