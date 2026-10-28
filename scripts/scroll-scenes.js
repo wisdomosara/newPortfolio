@@ -2,7 +2,6 @@
   "use strict";
   const root = document.documentElement;
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-  const roomy = matchMedia("(min-height: 600px)");
   const cards = [...document.querySelectorAll(".work-track .project-card")];
   const track = document.querySelector(".work-track");
   const stages = [...document.querySelectorAll(".process-scene")];
@@ -22,6 +21,19 @@
   let frame = 0;
   let motion = false;
   let pinned = false;
+  track.style.setProperty("--stack-last-index", Math.max(0, cards.length - 1));
+
+  function smallViewportHeight() {
+    // Browser controls can change innerHeight while scrolling in either direction.
+    // Measure the same stable viewport unit used to size the panels.
+    const probe = document.createElement("div");
+    probe.style.cssText =
+      "position:absolute;top:0;left:0;width:0;height:100vh;height:100svh;visibility:hidden;pointer-events:none";
+    document.body.append(probe);
+    const height = probe.offsetHeight;
+    probe.remove();
+    return height;
+  }
 
   function render() {
     frame = 0;
@@ -86,13 +98,16 @@
   }
   function configure() {
     motion = !reduced.matches;
-    pinned = motion && roomy.matches;
+    pinned = motion;
     root.classList.toggle("scroll-motion", motion);
     root.classList.toggle("scroll-scenes", pinned);
     // Keep every card readable in short viewports or with enlarged text.
-    if (pinned && cards.some((card) =>
-      card.offsetHeight + parseFloat(getComputedStyle(card).top) + 24 > innerHeight
-    )) {
+    const viewportHeight = pinned ? smallViewportHeight() : 0;
+    if (pinned && cards.some((card) => {
+      const link = card.querySelector(".project-link");
+      return card.offsetHeight + parseFloat(getComputedStyle(card).top) + 24 > viewportHeight ||
+        link.scrollHeight > link.clientHeight + 1;
+    })) {
       pinned = false;
       root.classList.remove("scroll-scenes");
     }
@@ -131,7 +146,6 @@
   document.addEventListener("visibilitychange", schedule);
   document.addEventListener("portfolio:intro-ready", schedule);
   reduced.addEventListener("change", configure);
-  roomy.addEventListener("change", configure);
   document.fonts?.ready.then(configure);
   configure();
 })();

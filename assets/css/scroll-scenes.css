@@ -300,8 +300,9 @@
 .js-motion .section-heading.reveal.is-visible .heading-line > span {
   transform: translateY(0);
 }
-@media (min-height: 600px) and (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .scroll-scenes .work-track {
+    --stack-clearance: max(120px, calc(var(--stack-top, 30px) + var(--stack-last-index, 0) * var(--stack-step, 10px) + 24px));
     gap: 12svh;
     padding-bottom: 12svh;
   }
@@ -315,7 +316,7 @@
   }
   .scroll-scenes .work-track .project-link {
     min-height: 0;
-    height: calc(100svh - 120px);
+    height: calc(100svh - var(--stack-clearance));
     max-height: 850px;
     transform: scale(var(--stack-scale, 1)) rotate(var(--stack-rotate, 0deg));
     transform-origin: center top;
@@ -383,7 +384,8 @@
     min-height: clamp(420px, 60svh, 480px);
     max-height: none;
   }
-  .work-track .project-image {
+  .work-track .project-image,
+  .scroll-scenes .work-track .project-image {
     aspect-ratio: 1.6;
     height: auto;
     flex: none;
